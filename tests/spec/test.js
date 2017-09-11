@@ -21,12 +21,18 @@ if (typeof module === 'object' && module.exports) {
   intersection = returnExports;
 }
 
-var LARGE_ARRAY_SIZE = 200;
-var args = (function () {
-  return arguments;
-}(1, 2, 3));
-
 describe('intersection', function () {
+  var LARGE_ARRAY_SIZE;
+  var args;
+
+  beforeEach(function () {
+    args = (function () {
+      return arguments;
+    }(1, 2, 3));
+
+    LARGE_ARRAY_SIZE = 200;
+  });
+
   it('is a function', function () {
     expect(typeof intersection).toBe('function');
   });

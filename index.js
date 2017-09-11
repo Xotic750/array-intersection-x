@@ -1,6 +1,6 @@
 /**
  * @file Creates an array of unique values that are included in all given arrays.
- * @version 1.0.0
+ * @version 2.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -14,27 +14,10 @@ var reduce = require('array-reduce-x');
 var some = require('array-some-x');
 var arrayincludes = require('array-includes-x');
 var isNil = require('is-nil-x');
+var shift = Array.prototype.shift;
 
-var $intersection = function intersection() {
-  var arrays = filter(arguments, function (value) {
-    return isNil(value) === false;
-  });
-
-  if (arrays.length < 1) {
-    return [];
-  }
-
-  return reduce(arrays.shift(), function (acc, value) {
-    var isExcluded = some(arrays, function (array) {
-      return arrayincludes(array, value) === false;
-    }) === false;
-
-    if (isExcluded && arrayincludes(acc, value) === false) {
-      acc[acc.length] = value;
-    }
-
-    return acc;
-  }, []);
+var notNill = function _notNil(value) {
+  return isNil(value) === false;
 };
 
 /**
@@ -49,4 +32,22 @@ var $intersection = function intersection() {
  *
  * intersection([2, 1], [2, 3]); // => [2]
  */
-module.exports = $intersection;
+module.exports = function intersection() {
+  var arrays = filter(arguments, notNill);
+
+  if (arrays.length < 1) {
+    return [];
+  }
+
+  return reduce(shift.call(arrays), function (acc, value) {
+    var isExcluded = some(arrays, function (array) {
+      return arrayincludes(array, value) === false;
+    }) === false;
+
+    if (isExcluded && arrayincludes(acc, value) === false) {
+      acc[acc.length] = value;
+    }
+
+    return acc;
+  }, []);
+};
