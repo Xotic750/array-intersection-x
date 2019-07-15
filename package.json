@@ -51,7 +51,7 @@
   "dependencies": {
     "array-filter-x": "^3.0.1",
     "array-includes-x": "^3.0.0",
-    "array-reduce-x": "^2.1.0",
+    "array-reduce-x": "^3.0.0",
     "array-some-x": "^2.5.0",
     "is-nil-x": "^2.0.6"
   },
