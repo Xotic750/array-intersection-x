@@ -7,11 +7,12 @@
  * @module array-intersection-x
  */
 
-const filter = require('array-filter-x');
-const reduce = require('array-reduce-x');
-const some = require('array-some-x');
-const arrayincludes = require('array-includes-x');
-const isNil = require('is-nil-x');
+import filter from 'array-filter-x';
+
+import reduce from 'array-reduce-x';
+import some from 'array-some-x';
+import arrayincludes from 'array-includes-x';
+import isNil from 'is-nil-x';
 
 const {shift} = Array.prototype;
 
@@ -31,7 +32,7 @@ const notNill = function _notNil(value) {
  *
  * intersection([2, 1], [2, 3]); // => [2]
  */
-module.exports = function intersection() {
+export default function intersection() {
   const arrays = filter(arguments, notNill);
 
   if (arrays.length < 1) {
@@ -54,4 +55,4 @@ module.exports = function intersection() {
     },
     [],
   );
-};
+}
