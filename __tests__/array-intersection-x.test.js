@@ -1,4 +1,4 @@
-let intersection;
+import intersection from '../src/array-intersection-x';
 
 describe('intersection', function() {
   let LARGE_ARRAY_SIZE;
@@ -32,15 +32,15 @@ describe('intersection', function() {
   });
 
   it('should match `NaN`', function() {
-    expect.assertions(1);
+    expect.assertions(2);
     const actual = intersection([1, NaN, 3], [NaN, 5, NaN]);
 
     expect(actual).toHaveLength(1);
-    expect(actual[0]).not.toBe(actual[0]);
+    expect(Number.isNaN(actual[0])).toBe(true);
   });
 
   it('should work with large arrays of objects', function() {
-    expect.assertions(1);
+    expect.assertions(2);
     const object = {};
     let largeArray = new Array(LARGE_ARRAY_SIZE).fill(object);
 
@@ -50,15 +50,15 @@ describe('intersection', function() {
   });
 
   it('should work with large arrays of `NaN`', function() {
-    expect.assertions(1);
+    expect.assertions(2);
     const largeArray = new Array(LARGE_ARRAY_SIZE).fill(NaN);
     const actual = intersection([1, NaN, 3], largeArray);
     expect(actual).toHaveLength(1);
-    expect(actual[0]).not.toBe(actual[0]);
+    expect(Number.isNaN(actual[0])).toBe(true);
   });
 
   it('should work with `arguments` objects', function() {
-    expect.assertions(1);
+    expect.assertions(2);
     const array = [0, 1, null, 3];
     const expected = [1, 3];
 
@@ -74,7 +74,7 @@ describe('intersection', function() {
   });
 
   it('should treat values that are not arrays or `arguments` objects as empty', function() {
-    expect.assertions(1);
+    expect.assertions(3);
     const array = [0, 1, null, 3];
 
     expect(intersection(array, 3, {0: 1}, null)).toStrictEqual([]);

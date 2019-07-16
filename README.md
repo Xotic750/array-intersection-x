@@ -21,29 +21,28 @@
 <a name="module_array-intersection-x"></a>
 
 ## array-intersection-x
+
 Creates an array of unique values that are included in all given arrays.
 
-**Version**: 2.0.0  
-**Author**: Xotic750 <Xotic750@gmail.com>  
-**License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
-**Copyright**: Xotic750  
 <a name="exp_module_array-intersection-x--module.exports"></a>
 
 ### `module.exports([...array])` ⇒ <code>array</code> ⏏
+
 This method creates an array of unique values that are included in all given
 arrays using SameValueZero for equality comparisons. The order and references
 of result values are determined by the first array.
 
 **Kind**: Exported function  
-**Returns**: <code>array</code> - Returns the new array of intersecting values.  
+**Returns**: <code>array</code> - Returns the new array of intersecting values.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param      | Type               | Description            |
+| ---------- | ------------------ | ---------------------- |
 | [...array] | <code>array</code> | The arrays to inspect. |
 
-**Example**  
-```js
-var intersection = require('array-intersection-x');
+**Example**
 
-intersection([2, 1], [2, 3]); // => [2]
+```js
+import intersection from 'array-intersection-x';
+
+console.log(intersection([2, 1], [2, 3])); // => [2]
 ```
