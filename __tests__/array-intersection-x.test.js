@@ -36,26 +36,26 @@ describe('intersection', function() {
   });
 
   it('is a function', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     expect(typeof intersection).toBe('function');
   });
 
   it('should return the intersection of the given arrays', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const actual = intersection([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
     expect(actual).toStrictEqual([1, 2]);
   });
 
   it('should return an array of unique values', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const actual = intersection([1, 1, 3, 2, 2], [5, 2, 2, 1, 4], [2, 1, 1]);
 
     expect(actual).toStrictEqual([1, 2]);
   });
 
   it('should match `NaN`', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const actual = intersection([1, NaN, 3], [NaN, 5, NaN]);
 
     expect(actual).toHaveLength(1);
@@ -63,7 +63,7 @@ describe('intersection', function() {
   });
 
   it('should work with large arrays of objects', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const object = {};
     let largeArray = new Array(LARGE_ARRAY_SIZE).fill(object);
 
@@ -73,7 +73,7 @@ describe('intersection', function() {
   });
 
   it('should work with large arrays of `NaN`', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const largeArray = new Array(LARGE_ARRAY_SIZE).fill(NaN);
     const actual = intersection([1, NaN, 3], largeArray);
     expect(actual).toHaveLength(1);
@@ -81,7 +81,7 @@ describe('intersection', function() {
   });
 
   it('should work with `arguments` objects', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const array = [0, 1, null, 3];
     const expected = [1, 3];
 
@@ -90,14 +90,14 @@ describe('intersection', function() {
   });
 
   it('should work with a single array', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const actual = intersection([1, 1, 3, 2, 2]);
 
     expect(actual).toStrictEqual([1, 3, 2]);
   });
 
   it('should treat values that are not arrays or `arguments` objects as empty', function() {
-    expect.assertions(1)/
+    expect.assertions(1);
     const array = [0, 1, null, 3];
 
     expect(intersection(array, 3, {0: 1}, null)).toStrictEqual([]);
