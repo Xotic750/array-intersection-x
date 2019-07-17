@@ -23,7 +23,7 @@ var notNill = function notNil(value) {
 // eslint-enable jsdoc/check-param-names
 
 
-export default function intersection() {
+var intersection = function intersection() {
   var _this = this;
 
   /* eslint-disable-next-line prefer-rest-params */
@@ -50,6 +50,8 @@ export default function intersection() {
 
     return acc;
   }.bind(this), []);
-}
+};
+
+export default intersection;
 
 //# sourceMappingURL=array-intersection-x.esm.js.map

@@ -21,7 +21,7 @@ const notNill = function notNil(value) {
  * @returns {Array} Returns the new array of intersecting values.
  */
 // eslint-enable jsdoc/check-param-names
-export default function intersection() {
+const intersection = function intersection() {
   /* eslint-disable-next-line prefer-rest-params */
   const arrays = filter(arguments, notNill);
 
@@ -45,4 +45,6 @@ export default function intersection() {
     },
     [],
   );
-}
+};
+
+export default intersection;

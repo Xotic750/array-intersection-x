@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-16T23:23:09.092Z",
+  "date": "2019-07-17T11:43:01.545Z",
   "describe": "",
   "description": "Creates an array of unique values that are included in all given arrays.",
   "file": "array-intersection-x.js",
-  "hash": "fb4902415ca8198c7e9c",
+  "hash": "a4572a00f1b2a510e403",
   "license": "MIT",
   "version": "3.0.0"
 }
@@ -13137,7 +13137,6 @@ var inc = $includes;
 
 
 // CONCATENATED MODULE: ./dist/array-intersection-x.esm.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return intersection; });
 function array_intersection_x_esm_newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
 
 
@@ -13163,7 +13162,7 @@ var notNill = function notNil(value) {
 // eslint-enable jsdoc/check-param-names
 
 
-function intersection() {
+var array_intersection_x_esm_intersection = function intersection() {
   var _this = this;
 
   /* eslint-disable-next-line prefer-rest-params */
@@ -13190,7 +13189,9 @@ function intersection() {
 
     return acc;
   }.bind(this), []);
-}
+};
+
+/* harmony default export */ var array_intersection_x_esm = __webpack_exports__["default"] = (array_intersection_x_esm_intersection);
 
 
 
