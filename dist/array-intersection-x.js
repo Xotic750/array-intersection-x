@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-22T13:15:57.250Z",
+  "date": "2019-07-22T17:32:17.831Z",
   "describe": "",
   "description": "Creates an array of unique values that are included in all given arrays.",
   "file": "array-intersection-x.js",
   "hash": "fcf5a74ffcd2f017fd5f",
   "license": "MIT",
-  "version": "3.0.6"
+  "version": "3.0.7"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
