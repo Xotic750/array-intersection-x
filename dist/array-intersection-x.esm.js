@@ -1,14 +1,26 @@
-function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
-
 import filter from 'array-filter-x';
 import reduce from 'array-reduce-x';
 import some from 'array-some-x';
 import arrayincludes from 'array-includes-x';
 import isNil from 'is-nil-x';
-var shift = Array.prototype.shift;
+var shift = [].shift;
 
 var notNill = function notNil(value) {
   return isNil(value) === false;
+};
+
+var createReducer = function createReducer(arrays) {
+  return function reducer(acc, value) {
+    var isIncluded = some(arrays, function exclude(array) {
+      return arrayincludes(array, value) === false;
+    });
+
+    if (isIncluded === false && arrayincludes(acc, value) === false) {
+      acc[acc.length] = value;
+    }
+
+    return acc;
+  };
 }; // eslint-disable jsdoc/check-param-names
 // noinspection JSCommentMatchesSignature
 
@@ -24,32 +36,14 @@ var notNill = function notNil(value) {
 
 
 var intersection = function intersection() {
-  var _this = this;
-
-  /* eslint-disable-next-line prefer-rest-params */
   var arrays = filter(arguments, notNill);
+  /* eslint-disable-line prefer-rest-params */
 
   if (arrays.length < 1) {
     return [];
   }
 
-  return reduce(shift.call(arrays), function (acc, value) {
-    var _this2 = this;
-
-    _newArrowCheck(this, _this);
-
-    var isExcluded = some(arrays, function (array) {
-      _newArrowCheck(this, _this2);
-
-      return arrayincludes(array, value) === false;
-    }.bind(this)) === false;
-
-    if (isExcluded && arrayincludes(acc, value) === false) {
-      acc[acc.length] = value;
-    }
-
-    return acc;
-  }.bind(this), []);
+  return reduce(shift.call(arrays), createReducer(arrays), []);
 };
 
 export default intersection;

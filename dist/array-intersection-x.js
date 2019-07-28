@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-27T22:02:21.406Z",
+  "date": "2019-07-28T20:40:55.774Z",
   "describe": "",
   "description": "Creates an array of unique values that are included in all given arrays.",
   "file": "array-intersection-x.js",
-  "hash": "0cdc65c7e32144ca06f2",
+  "hash": "1b81cc1ef8bda6bb9af4",
   "license": "MIT",
   "version": "3.0.13"
 }
@@ -2745,17 +2745,29 @@ var inc = $includes;
 
 
 // CONCATENATED MODULE: ./dist/array-intersection-x.esm.js
-function array_intersection_x_esm_newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
 
 
 
 
 
-
-var shift = Array.prototype.shift;
+var shift = [].shift;
 
 var notNill = function notNil(value) {
   return is_nil_x_esm(value) === false;
+};
+
+var array_intersection_x_esm_createReducer = function createReducer(arrays) {
+  return function reducer(acc, value) {
+    var isIncluded = array_some_x_esm(arrays, function exclude(array) {
+      return array_includes_x_esm(array, value) === false;
+    });
+
+    if (isIncluded === false && array_includes_x_esm(acc, value) === false) {
+      acc[acc.length] = value;
+    }
+
+    return acc;
+  };
 }; // eslint-disable jsdoc/check-param-names
 // noinspection JSCommentMatchesSignature
 
@@ -2771,32 +2783,14 @@ var notNill = function notNil(value) {
 
 
 var array_intersection_x_esm_intersection = function intersection() {
-  var _this = this;
-
-  /* eslint-disable-next-line prefer-rest-params */
   var arrays = array_filter_x_esm(arguments, notNill);
+  /* eslint-disable-line prefer-rest-params */
 
   if (arrays.length < 1) {
     return [];
   }
 
-  return array_reduce_x_esm(shift.call(arrays), function (acc, value) {
-    var _this2 = this;
-
-    array_intersection_x_esm_newArrowCheck(this, _this);
-
-    var isExcluded = array_some_x_esm(arrays, function (array) {
-      array_intersection_x_esm_newArrowCheck(this, _this2);
-
-      return array_includes_x_esm(array, value) === false;
-    }.bind(this)) === false;
-
-    if (isExcluded && array_includes_x_esm(acc, value) === false) {
-      acc[acc.length] = value;
-    }
-
-    return acc;
-  }.bind(this), []);
+  return array_reduce_x_esm(shift.call(arrays), array_intersection_x_esm_createReducer(arrays), []);
 };
 
 /* harmony default export */ var array_intersection_x_esm = __webpack_exports__["default"] = (array_intersection_x_esm_intersection);

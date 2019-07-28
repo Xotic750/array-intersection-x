@@ -4,10 +4,24 @@ import some from 'array-some-x';
 import arrayincludes from 'array-includes-x';
 import isNil from 'is-nil-x';
 
-const {shift} = Array.prototype;
+const {shift} = [];
 
 const notNill = function notNil(value) {
   return isNil(value) === false;
+};
+
+const createReducer = function createReducer(arrays) {
+  return function reducer(acc, value) {
+    const isIncluded = some(arrays, function exclude(array) {
+      return arrayincludes(array, value) === false;
+    });
+
+    if (isIncluded === false && arrayincludes(acc, value) === false) {
+      acc[acc.length] = value;
+    }
+
+    return acc;
+  };
 };
 
 // eslint-disable jsdoc/check-param-names
@@ -22,29 +36,13 @@ const notNill = function notNil(value) {
  */
 // eslint-enable jsdoc/check-param-names
 const intersection = function intersection() {
-  /* eslint-disable-next-line prefer-rest-params */
-  const arrays = filter(arguments, notNill);
+  const arrays = filter(arguments, notNill); /* eslint-disable-line prefer-rest-params */
 
   if (arrays.length < 1) {
     return [];
   }
 
-  return reduce(
-    shift.call(arrays),
-    (acc, value) => {
-      const isExcluded =
-        some(arrays, (array) => {
-          return arrayincludes(array, value) === false;
-        }) === false;
-
-      if (isExcluded && arrayincludes(acc, value) === false) {
-        acc[acc.length] = value;
-      }
-
-      return acc;
-    },
-    [],
-  );
+  return reduce(shift.call(arrays), createReducer(arrays), []);
 };
 
 export default intersection;
