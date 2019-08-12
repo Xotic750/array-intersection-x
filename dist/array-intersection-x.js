@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-07T22:42:56.578Z",
+  "date": "2019-08-12T22:41:48.553Z",
   "describe": "",
   "description": "Creates an array of unique values that are included in all given arrays.",
   "file": "array-intersection-x.js",
