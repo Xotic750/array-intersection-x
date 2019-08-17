@@ -55,7 +55,8 @@
     "array-includes-x": "^3.1.0",
     "array-reduce-x": "^3.1.0",
     "array-some-x": "^3.1.0",
-    "is-nil-x": "^2.1.0"
+    "is-nil-x": "^2.1.0",
+    "simple-methodize-x": "^1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

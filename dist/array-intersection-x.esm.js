@@ -3,9 +3,10 @@ import reduce from 'array-reduce-x';
 import some from 'array-some-x';
 import arrayincludes from 'array-includes-x';
 import isNil from 'is-nil-x';
-var shift = [].shift;
+import methodize from 'simple-methodize-x';
+var shift = methodize([].shift);
 
-var notNill = function notNil(value) {
+var notNil = function notNil(value) {
   return isNil(value) === false;
 };
 
@@ -36,14 +37,10 @@ var createReducer = function createReducer(arrays) {
 
 
 var intersection = function intersection() {
-  var arrays = filter(arguments, notNill);
-  /* eslint-disable-line prefer-rest-params */
-
-  if (arrays.length < 1) {
-    return [];
-  }
-
-  return reduce(shift.call(arrays), createReducer(arrays), []);
+  /* eslint-disable-next-line prefer-rest-params */
+  var arrays = filter(arguments, notNil);
+  var result = [];
+  return arrays.length < 1 ? result : reduce(shift(arrays), createReducer(arrays), result);
 };
 
 export default intersection;

@@ -17,6 +17,13 @@ describe('intersection', function() {
     expect(typeof intersection).toBe('function');
   });
 
+  it('should return tan empty array', function() {
+    expect.assertions(1);
+    const actual = intersection();
+
+    expect(actual).toStrictEqual([]);
+  });
+
   it('should return the intersection of the given arrays', function() {
     expect.assertions(1);
     const actual = intersection([1, 3, 2], [5, 2, 1, 4], [2, 1]);

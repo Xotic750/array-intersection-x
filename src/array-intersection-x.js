@@ -3,10 +3,11 @@ import reduce from 'array-reduce-x';
 import some from 'array-some-x';
 import arrayincludes from 'array-includes-x';
 import isNil from 'is-nil-x';
+import methodize from 'simple-methodize-x';
 
-const {shift} = [];
+const shift = methodize([].shift);
 
-const notNill = function notNil(value) {
+const notNil = function notNil(value) {
   return isNil(value) === false;
 };
 
@@ -36,13 +37,11 @@ const createReducer = function createReducer(arrays) {
  */
 // eslint-enable jsdoc/check-param-names
 const intersection = function intersection() {
-  const arrays = filter(arguments, notNill); /* eslint-disable-line prefer-rest-params */
+  /* eslint-disable-next-line prefer-rest-params */
+  const arrays = filter(arguments, notNil);
+  const result = [];
 
-  if (arrays.length < 1) {
-    return [];
-  }
-
-  return reduce(shift.call(arrays), createReducer(arrays), []);
+  return arrays.length < 1 ? result : reduce(shift(arrays), createReducer(arrays), result);
 };
 
 export default intersection;
